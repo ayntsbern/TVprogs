@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,14 +30,10 @@
 <table>
     <tr>
         <th>Название</th>
-        <th>Категория</th>
-        <th>Действие</th>
     </tr>
     <c:forEach var="channel" items="${channelList}">
         <tr>
-            <td>${channel.title}</td>
-            <td></td>
-            <td></td>
+            <td><a href="<spring:url value="/programme/${channel.id-1}" />">${channel.title}</a></td>
         </tr>
     </c:forEach>
 </table>
