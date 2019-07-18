@@ -1,15 +1,16 @@
 package com.tvprog.domain;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Channel {
     private Integer id;
     private String title;
-    private List<TVprogramme> tVprogrammeLinked = new LinkedList<TVprogramme>();
+    private List<TVprogramme> tVprogrammeLinked = new LinkedList<>();
 
+    public Channel(Integer id, String title){
+        this.id = id;
+        this.title = title;
+    }
     public Integer getId() {
         return id;
     }
@@ -26,7 +27,19 @@ public class Channel {
         this.title = title;
     }
 
-    static public class TVprogramme {
+    public void setProgramme (String time, String progTitle){
+        TVprogramme prog1 = new TVprogramme();
+        prog1.setTime(time);
+        prog1.setProgtitle(progTitle);
+        tVprogrammeLinked.add(prog1);
+        Collections.sort(tVprogrammeLinked);
+    }
+
+    public List<TVprogramme> getProgramme(){
+        return tVprogrammeLinked;
+    }
+
+    static public class TVprogramme implements Comparable< TVprogramme >{
         private String time;
         private String progTitle;
 
@@ -39,14 +52,25 @@ public class Channel {
         }
 
         public void setTime(String time) {
-            //time.set(Calendar.HOUR_OF_DAY, Integer.parseInt(intTime.toString().substring(0, 1)));
-            //time.set(Calendar.MINUTE, Integer.parseInt(intTime.toString().substring(2, 3)));
             this.time = time;
         }
 
         public String getTime() {
-            //time.get(Calendar.HOUR_OF_DAY);
             return time;
+        }
+
+        @Override
+        public int compareTo(TVprogramme o) {
+            String[] timeS = this.getTime().split(":");
+            String newTimeS = "";
+            for (int i=0; i < timeS.length; i++) newTimeS += timeS[i];
+            Integer time = Integer.parseInt(newTimeS);
+
+            String[] timeS2 = o.getTime().split(":");
+            String newTimeS2 = "";
+            for (int i=0; i < timeS2.length; i++) newTimeS2 += timeS2[i];
+            Integer time2 = Integer.parseInt(newTimeS2);
+            return time.compareTo(time2);
         }
     }
 }
