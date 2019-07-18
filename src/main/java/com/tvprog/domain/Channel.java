@@ -92,5 +92,10 @@ public class Channel {
             Integer time2 = Integer.parseInt(newTimeS2);
             return time.compareTo(time2);
         }
+
+        @Override
+        public String toString() {
+            return "Programm [id=" + id + ", time=" + time + ", progTitle=" + progTitle + "]";
+        }
     }
 }
