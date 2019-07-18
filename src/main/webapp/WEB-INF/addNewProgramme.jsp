@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: thehe
@@ -11,7 +12,8 @@
     <title>Добавление новой телепередачи</title>
 </head>
 <body>
-<form action="/add-new-programme" method="POST">
+<c:url var="addUrl" value="/add/${id}"/>
+<form action="${addUrl}" method="GET">
     <label>Время</label>
     <input type="text" name="time">
     <label>Название</label>
