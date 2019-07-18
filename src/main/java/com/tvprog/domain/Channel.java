@@ -27,8 +27,18 @@ public class Channel {
         this.title = title;
     }
 
+    public void setProgramme (Integer id, String time, String progTitle){
+        TVprogramme prog1 = new TVprogramme();
+        prog1.setId(id);
+        prog1.setTime(time);
+        prog1.setProgtitle(progTitle);
+        tVprogrammeLinked.add(prog1);
+        Collections.sort(tVprogrammeLinked);
+    }
     public void setProgramme (String time, String progTitle){
         TVprogramme prog1 = new TVprogramme();
+        Integer id = tVprogrammeLinked.size();
+        prog1.setId(id);
         prog1.setTime(time);
         prog1.setProgtitle(progTitle);
         tVprogrammeLinked.add(prog1);
@@ -40,8 +50,18 @@ public class Channel {
     }
 
     static public class TVprogramme implements Comparable< TVprogramme >{
+
+        private Integer id;
         private String time;
         private String progTitle;
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Integer getId() {
+            return id;
+        }
 
         public void setProgtitle(String progTitle) {
             this.progTitle = progTitle;
@@ -71,6 +91,11 @@ public class Channel {
             for (int i=0; i < timeS2.length; i++) newTimeS2 += timeS2[i];
             Integer time2 = Integer.parseInt(newTimeS2);
             return time.compareTo(time2);
+        }
+
+        @Override
+        public String toString() {
+            return "Programm [id=" + id + ", time=" + time + ", progTitle=" + progTitle + "]";
         }
     }
 }

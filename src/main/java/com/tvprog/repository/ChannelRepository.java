@@ -4,9 +4,14 @@ import java.util.List;
 import com.tvprog.domain.Channel;
 
 public interface ChannelRepository {
-    //void save(Order order);
 
-    //void delete(Order order);
+    void delete(List<Channel.TVprogramme> tVprogramme, String time);
+
+    void update(Channel.TVprogramme tVprogramme, String time, String progTitle);
 
     List<Channel> getAll();
+
+    //List<Channel.TVprogramme> getAllProg();
+
+    Channel getById(Integer id);
 }
