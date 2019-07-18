@@ -39,13 +39,15 @@
         <tr>
             <th>Время</th>
             <th>Название</th>
-            <th>Удалить эту передачу</th>
+            <th>Удалить передачу</th>
+            <th>Изменить передачу</th>
         </tr>
             <c:forEach var="programme" items="${programmeList}">
             <tr>
                 <td>${programme.time}</td>
                 <td>${programme.progtitle}</td>
                 <td><a href="<spring:url value="/delete/${id}/${programme.time}" />">Удалить</a></td>
+                <td><a href="<spring:url value="/update-page/${id}/${programme.id}/${programme.time}/${programme.progtitle}" />">Изменить</a></td>
             </tr>
             </c:forEach>
     </table>
