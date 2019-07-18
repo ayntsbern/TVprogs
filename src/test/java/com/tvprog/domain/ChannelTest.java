@@ -18,7 +18,7 @@ public class ChannelTest {
     @Test
     public void getTitle() {
         Channel channel = new Channel(2, "TNT");
-        Assert.assertEquals("Неверно установлено название","STS",channel.getTitle());
+        Assert.assertEquals("Неверно установлено название","TNT",channel.getTitle());
     }
 
     @Test
