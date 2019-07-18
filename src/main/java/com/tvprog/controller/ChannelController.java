@@ -38,9 +38,6 @@ public class ChannelController {
     }
     @RequestMapping(value = "/add-new-programme/{id}", method=RequestMethod.GET)
     public String addNewProgrammePage(Model model, @PathVariable("id") Integer id) {
-        //Channel.TVprogramme tv = new Channel.TVprogramme();
-        //Channel channels = channelService.getById(id);
-        //channels.getProgramme()
         model.addAttribute("id", id);
         return "addNewProgramme";
     }
