@@ -12,7 +12,7 @@
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
-            width: 100%;
+            width: fit-content;
         }
 
         td, th {
