@@ -24,10 +24,8 @@ public class ChannelServiceImplTest {
     @Test
     public void updateList() {
     }
-
     @Test
     public void getAll() {
-
     }
 
     @Test

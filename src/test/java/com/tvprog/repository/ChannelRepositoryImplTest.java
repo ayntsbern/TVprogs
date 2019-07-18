@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class ChannelRepositoryImplTest {
     private ChannelRepository channelRepository = new ChannelRepositoryImpl();
+
     @Test
     public void update() {
         Channel channel1 = new Channel(1, "Первый");
