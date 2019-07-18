@@ -26,8 +26,7 @@ public class ChannelServiceImpl implements ChannelService {
         if(tVprogramme!=null) Collections.sort(tVprogramme);
     }
 
-    public List<Channel> getAll(){
-        return  channelRepository.getAll();
+    public List<Channel> getAll(){ return  channelRepository.getAll();
     }
 
     public Channel getById(Integer id) {
