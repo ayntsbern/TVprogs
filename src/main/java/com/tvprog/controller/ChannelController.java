@@ -60,7 +60,34 @@ public class ChannelController {
         Channel channel = channelService.getById(id);
         List<Channel.TVprogramme> tVprogrammeList = channel.getProgramme();
         channelService.delete(tVprogrammeList, time);
-        //orderService.delete(order);
+        return "redirect:/programme/{id}";
+    }
+
+    @RequestMapping(value="update-page/{id}/{progId}/{time}/{progTitle}", method = RequestMethod.GET)
+    public String updateProgrammePage(Model model, @PathVariable("id") Integer id,
+                                      @PathVariable("progId") Integer progId,
+                                      @PathVariable(value="time") String time,
+                                      @PathVariable(value="progTitle") String progTitle){
+        model.addAttribute("id", id);
+        model.addAttribute("time", time);
+        model.addAttribute("progTitle", progTitle);
+        model.addAttribute("progId", progId);
+        return "updateProgramme";
+    }
+
+    @RequestMapping(value="update/{id}/{progId}", method = RequestMethod.GET)
+    public String updateProgramm(@PathVariable("id") Integer id,
+                                 @PathVariable("progId") Integer progId,
+                                 @RequestParam(value="newtime") String time,
+                                 @RequestParam(value="newprogTitle") String progTitle){
+        Channel channel = channelService.getById(id);
+        List<Channel.TVprogramme> tVprogrammeList = channel.getProgramme();
+
+        for(Channel.TVprogramme programme : tVprogrammeList){
+            if(programme.getId().compareTo(progId)==0)
+                channelService.update(programme, time, progTitle);
+        }
+        channelService.updateList(tVprogrammeList);
         return "redirect:/programme/{id}";
     }
 }
